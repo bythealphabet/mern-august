@@ -1,0 +1,69 @@
+{
+  "name": "mern-august",
+  "version": "1.0.0",
+  "description": "Web aplication template build with MERN stack.",
+  "main": "server/server.js",
+  "scripts": {
+    "clean": "rm -r dist ",
+    "dev": "nodemon",
+    "build": "webpack --config ./build-utils/webpack.config.client.production.js && webpack --mode=production --config ./build-utils/webpack.config.server.js",
+    "start": "NODE_ENV=production node ./dist/server.generated.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bythealphabet/mern-august.git"
+  },
+  "keywords": [
+    "REACT",
+    "EXPRESS",
+    "MONGODB",
+    "MONGOOSE",
+    "NODE",
+    "EMOTIONJS"
+  ],
+  "author": "Isaac Lucas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bythealphabet/mern-august/issues"
+  },
+  "homepage": "https://github.com/bythealphabet/mern-august#readme",
+  "dependencies": {
+    "@emotion/react": "^11.4.0",
+    "animejs": "^3.2.1",
+    "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-jwt": "^6.0.0",
+    "helmet": "^4.6.0",
+    "js-cookie": "^3.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
+    "mongoose": "^5.13.4",
+    "nodemailer": "^6.6.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-hot-loader": "^4.13.0",
+    "react-router-dom": "^5.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.8",
+    "@babel/plugin-transform-runtime": "^7.14.5",
+    "@babel/preset-env": "^7.14.8",
+    "@babel/preset-react": "^7.14.5",
+    "@emotion/babel-plugin": "^11.3.0",
+    "@hot-loader/react-dom": "^17.0.1",
+    "babel-loader": "^8.2.2",
+    "file-loader": "^6.2.0",
+    "nodemon": "^2.0.12",
+    "sass-loader": "^12.1.0",
+    "style-loader": "^3.2.1",
+    "webpack": "^5.47.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-middleware": "^5.0.0",
+    "webpack-hot-middleware": "^2.25.0",
+    "webpack-node-externals": "^3.0.0"
+  }
+}
