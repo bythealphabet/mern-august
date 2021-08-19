@@ -1,24 +1,24 @@
 import React, { useEffect, useState, useRef } from "react";
 import { jsx, css } from "@emotion/react"; /** @jsx jsx */
-import useScrollPositionY from "../../hooks/useScrollPositionY";
-import anime from "animejs/lib/anime.es.js";
+// import useScrollPositionY from "../../hooks/useScrollPositionY";
+// import anime from "animejs/lib/anime.es.js";
 
 function BackgroundArc({ cssPosition }) {
-  const svgRef = useRef(null);
-  const [animateNow, top, scroll] = useScrollPositionY(120);
+  // const svgRef = useRef(null);
+  // const [animateNow, top, scroll] = useScrollPositionY(120);
 
-  useEffect(() => {
-    const scrollCondition = scroll == 0 || scroll < 50;
+  // useEffect(() => {
+  //   const scrollCondition = scroll == 0 || scroll < 50;
 
-    {
-      let animationScale = scrollCondition ? 1 : scroll / 5;
-      svgRef.current = anime({
-        targets: ".svg",
-        scale: animationScale,
-        easing: "easeInOutQuint",
-      });
-    }
-  }, [animateNow, top]);
+  //   {
+  //     let animationScale = scrollCondition ? 1 : scroll / 5;
+  //     svgRef.current = anime({
+  //       targets: ".svg",
+  //       scale: animationScale,
+  //       easing: "easeInOutQuint",
+  //     });
+  //   }
+  // }, [animateNow, top]);
 
   const style = css`
     .rect {

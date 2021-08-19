@@ -2,7 +2,7 @@ import React from "react";
 import { jsx, css, keyframes } from "@emotion/react"; /** @jsx jsx */
 import NavBar from "./NavBar/NavBar";
 import MobileMenu from "./MobileMenu/MobileMenu";
-import useWindowSize from "../../hooks/useWindowSize";
+import useWindowSize from "../../../hooks/useWindowSize";
 
 const byTheAlphabet = ({ active, navList, position }) => {
   const windowSize = useWindowSize();

@@ -4,13 +4,13 @@ import { jsx, css } from "@emotion/react"; /** @jsx jsx */
 
 ////CORE
 import Home from "./container/core/home/Home";
-import About from "./container/core/About";
-import Contact from "./container/core/Contact";
 
 //NAVIGATION
+import Header from "./container/navigation/header/Header";
+import Footer from "./container/navigation/footer/Footer";
 
-import Header from "./container/header/Header";
-import Footer from "./container/footer/Footer";
+//USER AUTH
+import Signup from "./container/user/auth/Signup";
 
 function MainRouter(props) {
   const [active, setActive] = useState(false);
@@ -32,11 +32,8 @@ function MainRouter(props) {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route path="/about">
-          <About />
-        </Route>
-        <Route path="/contact">
-          <Contact />
+        <Route path="/signup">
+          <Signup />
         </Route>
       </Switch>
       <Footer />

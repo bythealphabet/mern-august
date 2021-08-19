@@ -7,8 +7,8 @@ import {
   linksColor,
 } from "./NavBarStyles";
 import { Link, useLocation } from "react-router-dom";
-import useScrollPositionY from "../../../hooks/useScrollPositionY";
-import useWindowSize from "../../../hooks/useWindowSize";
+import useScrollPositionY from "../../../../hooks/useScrollPositionY";
+import useWindowSize from "../../../../hooks/useWindowSize";
 
 const NavBar = ({ navList = [] }) => {
   const [_, top] = useScrollPositionY();

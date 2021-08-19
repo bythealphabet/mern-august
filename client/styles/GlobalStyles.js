@@ -60,6 +60,11 @@ function GlobalStyles() {
           font-weight: 300;
         }
 
+        /* TYPOGRAPY */
+        h1 {
+          font-size: 1.5em;
+        }
+
         /*BUTTONS ------------*/
 
         .btn {
