@@ -2,7 +2,7 @@ import React from "react";
 import { jsx, css } from "@emotion/react"; /** @jsx jsx */
 import inputStyles from "./inputStyles";
 
-function Input({ change = () => "ok", label, placeholder, type, value }) {
+function Input({ change, label, placeholder, type, value }) {
   const inputValue = (e) => change(e.target.value);
 
   return (

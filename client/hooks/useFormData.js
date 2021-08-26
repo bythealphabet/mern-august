@@ -1,25 +1,19 @@
-import React, { useState, useEffect, useReducer } from "react";
+import React, { useState, useEffect } from "react";
 
-const ON_CHANGE = "ON_CHANGE";
+const useFromData = (formObj, obj) => {
+  const [inputData, setInputData] = useState({ ...formObj });
 
-function reducer(state = "", action) {
-	if (action.type === ON_CHANGE) {
-		const newValue = action.payload;
-		return { ...state, ...newValue };
-	}
+  useEffect(() => {
+    setInputData({ ...formObj, ...obj });
+  }, [obj]);
 
-	return state;
-}
+  const dropImage = (data) => setInputData({ ...inputData, photo: data });
 
-const useFromData = () => {
-	const [inputData, dispatch] = useReducer(reducer, "");
+  const onInputChange = (name) => (value) => {
+    setInputData({ ...inputData, [name]: value });
+  };
 
-	const onInputChange = (name) => (e) => {
-		let value = e.target.value;
-		dispatch({ type: ON_CHANGE, payload: { [name]: value } });
-	};
-
-	return [inputData, onInputChange];
+  return [inputData, onInputChange, dropImage];
 };
 
 export default useFromData;

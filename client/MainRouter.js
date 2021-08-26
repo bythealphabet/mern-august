@@ -11,6 +11,8 @@ import Footer from "./container/navigation/footer/Footer";
 
 //USER AUTH
 import Signup from "./container/user/auth/Signup";
+import Signin from "./container/user/auth/Signin";
+import Confirmation from "./container/user/auth/Confirmation";
 
 function MainRouter(props) {
   const [active, setActive] = useState(false);
@@ -23,10 +25,14 @@ function MainRouter(props) {
 
   const styles = css`
     ${active ? stopScroll : null}
+    display: grid;
+    grid-template-rows: var(--headerHeight) minmax(100vh, auto) var(
+        --footerHeight
+      );
   `;
 
   return (
-    <div className="base-grid main-router-rows" css={styles}>
+    <div className="base-grid" css={styles}>
       <Header isMenuActive={isMenuActive} />
       <Switch>
         <Route exact path="/">
@@ -34,6 +40,12 @@ function MainRouter(props) {
         </Route>
         <Route path="/signup">
           <Signup />
+        </Route>
+        <Route path="/login">
+          <Signin />
+        </Route>
+        <Route path="/confirmation/:token">
+          <Confirmation />
         </Route>
       </Switch>
       <Footer />

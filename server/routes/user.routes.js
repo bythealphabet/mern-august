@@ -12,6 +12,10 @@ router
   .put(auth.requireSignin, auth.hasAuthorization, userCtrl.update)
   .delete(auth.requireSignin, auth.hasAuthorization, userCtrl.remove);
 
+router.route("/api/confirmation").post(userCtrl.confirmation);
+// router.route("/api/forgot-password").put(userCtrl.forgotPassword);
+// router.route("/api/reset-password").put(userCtrl.resetPassword);
+
 router.param("userId", userCtrl.userByID);
 
 export default router;

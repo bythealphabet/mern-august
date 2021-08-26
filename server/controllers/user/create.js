@@ -1,11 +1,13 @@
 import User from "../../models/user.model";
 import errorHandler from "../../helpers/dbErrorHandler";
-import { sendEmailWithNodemailer } from "../../email/email";
+// import { sendEmailWithNodemailer } from "../../email/email";
+import sgMail from "@sendgrid/mail";
 import config from "../../../config/config";
 import jwt from "jsonwebtoken";
 import confirmationMail from "../../email/email-templates/confirmationMail";
 
 const development = config.env === "development";
+sgMail.setApiKey(config.sendGridApiKey);
 
 export const create = async (req, res) => {
   const { name, email, password } = req.body;
@@ -21,17 +23,30 @@ export const create = async (req, res) => {
       { expiresIn: "10m" }
     );
 
-    const emailData = {
-      from: "clickkorsou@gmail.com",
+    const msg = {
       to: email,
-      subject: "Account Activation Link",
+      from: "lucas@bythealphabet.com",
+      subject: "Account activation link",
       html: confirmationMail(token, development),
     };
-    sendEmailWithNodemailer(req, res, emailData);
+
+    sgMail
+      .send(msg)
+      .then((sent) => {
+        return res.json({
+          message: `An Email has been sent to ${email}. Follow the instruction to activate your account`,
+        });
+      })
+      .catch((error) => {
+        console.log("error", error);
+        return res
+          .status(400)
+          .json({ error: errorHandler.getErrorMessage(error) });
+      });
   });
 };
 
-const confirmation = (req, res, next) => {
+export const confirmation = (req, res, next) => {
   const { token } = req.body;
 
   if (token) {
@@ -59,14 +74,12 @@ const confirmation = (req, res, next) => {
               email,
               password,
               isVerified: true,
-              imgId: uuidv4(),
             });
             newUser
               .save()
               .then(() =>
                 res.status(200).json({
-                  message:
-                    "Your Acount is Successfully Activated Please Sign in",
+                  message: "Your Acount is Successfully Activated Please login",
                 })
               )
               .catch((error) =>
@@ -80,7 +93,7 @@ const confirmation = (req, res, next) => {
 
           if (user.isVerified) {
             return res.status(400).send({
-              message: "This Email has already been verified, Sign In",
+              message: "This Email has already been verified, please login",
             });
           }
         }

@@ -35,11 +35,11 @@ export default (link, development) => {
 							<td bgcolor=" #fff" align="center">
 								<a
 									href="http://${
-                    development ? "localhost:3000" : "maskliente.com"
-                  }/user-auth-confirmation/${link}"
+                    development ? "localhost:3000" : "bythealphabet.com"
+                  }/confirmation/${link}"
 									>http://${
-                    development ? "localhost:3000" : "maskliente.com"
-                  }/user-auth-confirmation/${link}
+                    development ? "localhost:3000" : "bythealphabet.com"
+                  }/confirmation/${link}
 								</a>
 							</td>
 						</tr>

@@ -2,7 +2,7 @@ import React from "react";
 import { jsx, css } from "@emotion/react"; /** @jsx jsx */
 import { Link } from "react-router-dom";
 import Input from "../../../component/form/input/Input";
-import authStyles from "./authStyles";
+import authStyles, { authGrid } from "./authStyles";
 import mainContentStyles from "../../../styles/mainContentStyles";
 import useFormData from "../../../hooks/useFormData";
 import { usePost } from "../../../hooks/useFetch";
@@ -19,13 +19,17 @@ function Signup() {
 
   function submit(e) {
     e.preventDefault();
+    console.log("inputdata", inputData);
     onSubmit(create, inputData);
   }
 
   return (
-    <section className="base-grid" css={[authStyles, mainContentStyles]}>
+    <section
+      className="base-grid"
+      css={[authStyles, mainContentStyles, authGrid(350)]}
+    >
       {success ? (
-        <p>{message}</p>
+        <p className="success-message">{message}</p>
       ) : (
         <>
           <p>Sign Up</p>
@@ -53,8 +57,8 @@ function Signup() {
             </button>
           </form>
 
-          <Link to="/signin" className="second-option">
-            Do you have an account? Sign in
+          <Link to="/login" className="second-option">
+            Do you have an account? login
           </Link>
         </>
       )}

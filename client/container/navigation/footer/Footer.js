@@ -8,6 +8,6 @@ function Footer() {
     grid-column: 1 / -1;
     grid-row: 3;
   `;
-  return <div css={footerStyles}>Footer</div>;
+  return <footer css={footerStyles}>Footer</footer>;
 }
 export default Footer;

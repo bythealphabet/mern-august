@@ -18,25 +18,24 @@ const NavBar = ({ navList = [] }) => {
   return (
     <nav css={nav}>
       <ul className="ul-list">
-        {navList.map((link, index) => {
-          console.log("equal", pathname);
-          console.log("link", link.to);
-
-          return (
-            <li className="li-item" key={`${link.to}${link.page}`}>
-              <Link
-                to={link.to}
-                css={[
-                  pathname === link.to ? currentPageUnderscore : pageUnderscore,
-                  pathname === "/" && top && windowSize.width > 900
-                    ? homeLinksTop
-                    : linksColor,
-                ]}
-              >
-                {link.page}
-              </Link>
-            </li>
-          );
+        {navList.map(({ to, page, show = true }, index) => {
+          if (show) {
+            return (
+              <li className="li-item" key={`${to}${page}`}>
+                <Link
+                  to={to}
+                  css={[
+                    pathname === to ? currentPageUnderscore : pageUnderscore,
+                    pathname === "/" && top && windowSize.width > 900
+                      ? homeLinksTop
+                      : linksColor,
+                  ]}
+                >
+                  {page}
+                </Link>
+              </li>
+            );
+          }
         })}
       </ul>
     </nav>

@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { jsx, css } from "@emotion/react"; /** @jsx jsx */
 import { useLocation } from "react-router-dom";
+import { AuthContext } from "../../../auth/AuthContext";
 import Hamburger from "./Hamburger";
 import HeaderLogo from "./HeaderLogo";
 import Menu from "./Menu";
 
-const topNav = (props) => {
+const Header = (props) => {
   const [active, setActive] = useState(false);
   const location = useLocation();
+  const { auth, signOutHandler, setCategoryName } = useContext(AuthContext);
 
   useEffect(() => {
     setActive(false);
@@ -22,9 +24,10 @@ const topNav = (props) => {
   const navList = [
     { to: "/projectonan", page: "projectonan" },
     { to: "/ken-mi-ta", page: "ken mi ta" },
-    { to: "/tuma-kontakto", page: "kontakto", btn: true },
-    { to: "/signup", page: "signup", btn: true },
-    { to: "/login", page: "login" },
+    { to: "/tuma-kontakto", page: "kontakto" },
+    { to: "/signup", page: "signup", btn: true, show: auth ? false : true },
+    { to: "/login", page: "login", show: auth ? false : true },
+    { to: "/signout", page: "signout", btn: true, show: auth ? true : false },
   ];
 
   const header = css`
@@ -73,4 +76,4 @@ const topNav = (props) => {
   );
 };
 
-export default topNav;
+export default Header;

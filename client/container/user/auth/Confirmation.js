@@ -1,19 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 
-// import { AuthContext } from "../../../auth/AuthContext";
-import { Input } from "../../../components/Forms/Forms";
-import { confirmation } from "../../../api/api-user";
-import { useHistory, useParams, Redirect } from "react-router-dom";
-import { usePost } from "../../../hook/useFetch";
+import { confirmation } from "../../../auth/api-auth";
+import { useHistory, useParams } from "react-router-dom";
+import { usePost } from "../../../hooks/useFetch";
 
 const Confirmation = (props) => {
-  //   const { auth } = useContext(AuthContext);
   const { token } = useParams();
   const history = useHistory();
-
-  //   if (auth) {
-  // return <Redirect to="/" />;
-  //   }
 
   const [data, submitToken, message, error] = usePost();
 
@@ -23,7 +16,7 @@ const Confirmation = (props) => {
 
   async function submit() {
     await submitToken(confirmation, { token });
-    await setTimeout(() => history.push("/user-auth-signin"), 3000);
+    await setTimeout(() => history.push("/login"), 3000);
   }
 
   return (

@@ -1,9 +1,20 @@
 import { jsx, css } from "@emotion/react"; /** @jsx jsx */
 
-export default css`
-  display: grid;
-  grid-template-rows: 100px 350px 50px;
+export function authGrid(p) {
+  return css`
+    display: grid;
+    grid-template-rows: 100px ${p}px 50px;
+  `;
+}
 
+export default css`
+  .success-message {
+    grid-column: 3 / -3;
+    grid-row: 1 / -1;
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+  }
   p {
     grid-column: 2 / -2;
     grid-row: 1;
@@ -16,6 +27,7 @@ export default css`
 
   form {
     grid-column: 2 / -2;
+    align-self: center;
     label {
       font-size: 1.1rem;
     }

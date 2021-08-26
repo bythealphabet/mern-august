@@ -97,9 +97,6 @@ function GlobalStyles() {
         }
 
         .main-router-rows {
-          grid-template-rows: var(---headerHeight) minmax(100vh, auto) var(
-              --footerHeight
-            );
         }
       `}
     />
